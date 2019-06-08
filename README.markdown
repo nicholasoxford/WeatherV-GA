@@ -6,7 +6,7 @@
 
 ## Overview
 
-I am creating this tool to apply knowledge around API request, Data Tranformation, R, Javascript, and Vue. I am pulling this data from [NOAA's](https://www.noaa.gov/) National Centers for Environmental Information's (NCDC) database. While on their [website](https://www.ncdc.noaa.gov/cdo-web/), there are many ways to access data, I found it most feasible, as a result of their  downlaodable CSV's "capacity of 1,000 Station Years" and convuated data sets. Furthermore, I wanted to display by county and there were was no sort by FIPPS code. Every county in the United States has a FIPS code, and the first two numbers represent the state which the county is found. 
+I am creating this tool to apply knowledge around API request, Data Tranformation, R, Javascript, and Vue. I am pulling this data from [NOAA's](https://www.noaa.gov/) National Centers for Environmental Information's (NCDC) database. While on their [website](https://www.ncdc.noaa.gov/cdo-web/), there are many ways to access data, I found accesing via API is the most feasible. This is a result of their  downlaodable CSV's "capacity of 1,000 Station Years" and convuated data sets. Furthermore, I wanted to display by county and there were was no sort by FIPPS code. Every county in the United States has a FIPS code, and the first two numbers represent the state which the county is found. 
 
 I am wrapping this tool using [VUE.JS](https://vuejs.org/). I am trying to further my knowledge in using VUE.JS, after spending my first week interning at **Peloton** and learning all about it. While at Georgia State I learned the fundamentals of R in a Data Systems class. 
 
