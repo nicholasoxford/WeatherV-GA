@@ -81,14 +81,74 @@ After succesfully pulling data lets run another function to plot it.
 ``` library(ggplot2)
 ggplot(atlantaSuperbowl$daily_data, aes(x = date, y = tmax, color = tmax_reporting)) + 
   geom_line() + geom_point() + theme_minimal() + 
-  xlab("Date in 2019") + ylab("Daily Max Temp (f)") + 
+  xlab("Date in 2019") + ylab("Daily Max Temp (c)") + 
   scale_color_continuous(name = "# stations\nreporting")
 ```
+
+You should see an output in RStudio.
+
+***Ploting Data on a Map***
+
+atlantaSuper bowl consist of three elements: "daily_data", "station _metadata", and "station_map". In the final element, "station_map", has information where the weather stations inside a county are located. If you run
+
+> atlantaSuperbowl$station_map
+
+You will see a map of Fulton with markers where the weather stations are. 
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
+
+## Taking a big step forward.
+
+Next, after hours of learning how much I don't know in R, I finally have code that is able to pull data, in order, and add it to a data frame. Here is the code I created.
+
+``` 
+##Set Date for countrykey, define plus.1 as a variable and load fips_code
+date = "2019-01-01"
+plus.1 <- 1
+data(fips_codes)
+##remove columns from fips_code that do not relate to georiga.
+fips_codes <- fips_codes[-(548:3237), ]
+fips_codes <- fips_codes[-(1:388), ]
+sampledf <- daily_fips(fips = 13001, date_min = date, 
+                      date_max = date, var = "tmax")
+##using this to create a dataframe that I can add to later
+##Delete varibales I don't need 
+sampledf$station_map <- NULL
+sampledf$station_metadata <- NULL
+sampledf$daily_data$tmax_reporting <- NULL
+sampledf$daily_data$fips <- 13001
+new.df <- rbind(sampledf$daily_data)
+##makenew df that I will add to later
+gafips <- 13000
+countyfips <- 10
+##Going to have this while loop eventually run through all GA FIPS codes. 
+##I was thinking a for loop could be better
+while ( countyfips <= 30 ){
+fipsnum= gafips + countyfips
+countytest <- as.character(countyfips)
+countytest1 <- paste("0", countytest, sep="")
+##running an if statement to check if the fips code is one used in georiga.
+##if true it grabs the data and does the same manipulation as above
+if(countytest1 %in% fips_codes$county_code == TRUE){
+tempdata <- daily_fips(fips = fipsnum, date_min = date, 
+date_max = date, var = "tmax")
+tempdata$station_map <- NULL
+tempdata$station_metadata <- NULL
+tempdata$daily_data$tmax_reporting <- NULL
+tempdata$daily_data$fips <- fipsnum
+new.df <- rbind( tempdata$daily_data,new.df)
+rm(tempdata)
+##I thought removing the tempdata would solve my column id issue
+} else { print (paste("Nothing found for", fipsnum, sep=" "))
+
+}
+countyfips <- plus.1 + countyfips
+}
+```
+While I am sure there are better ways of getting this working. 
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
