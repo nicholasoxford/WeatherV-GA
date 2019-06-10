@@ -2,8 +2,6 @@
 
 >Simple tool to visualize The hottest and coldest places in Georgia. 
 
-<hr>
-
 ## Overview
 
 I am creating this tool to apply knowledge around API request, Data Tranformation, R, Javascript, and Vue. I am pulling this data from [NOAA's](https://www.noaa.gov/) National Centers for Environmental Information's (NCDC) database. While on their [website](https://www.ncdc.noaa.gov/cdo-web/), there are many ways to access data, I found accesing via API is the most feasible. This is a result of their  downlaodable CSV's "capacity of 1,000 Station Years" and convuated data sets. Furthermore, I wanted to display by county and there were was no sort by FIPS code. Every county in the United States has a FIPS code, and the first two numbers represent the state which the county is found. 
@@ -23,7 +21,7 @@ The Data Vsualtion will be done using [plotly.js](https://plot.ly/javascript/). 
 
 **3) Install Countryweather** 
 - Install the package "Countyweather" (without quotes). You can learn how to install packages [here](http://web.cs.ucla.edu/~gulzar/rstudio/). 
-- Make sure to go back to the packages eplorer and ensure they are all checked. 
+- Make sure to go back to the packages explorer and ensure they are all checked. 
 ```dplyr (>= 0.4.3), ggmap (>= 2.6.1), ggplot2 (>= 2.1.0),
 geosphere (>= 1.5.1), lubridate (>= 1.5.6), purrr (>= 0.2.1),
 raster (>= 2.5.8), rnoaa (>= 0.6.5), sp (>= 1.2.3), stringi (>=
@@ -95,11 +93,6 @@ atlantaSuper bowl consist of three elements: "daily_data", "station _metadata", 
 
 You will see a map of Fulton with markers where the weather stations are. 
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
 ## Taking a big step forward.
 
 Next, after hours of learning how much I don't know in R, I finally have code that is able to pull data, in order, and add it to a data frame. Here is the code I created.
@@ -148,7 +141,14 @@ rm(tempdata)
 countyfips <- plus.1 + countyfips
 }
 ```
-While I am sure there are better ways of getting this working. 
+While I am sure there are better ways of getting this working. I tried my best to patch something together that resembled logical code. 
+NOAA has also locked me out of their database, for what I hope is 24 hours, so I have to focus on something else before I get back to downlaoding data. I believe I have it down. 
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
