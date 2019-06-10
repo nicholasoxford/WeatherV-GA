@@ -2,7 +2,6 @@
 date <- "2019-01-01"
 plus.1 <- 1
 data(fips_codes)
-talk <- "blah blah"
 print(talk)
 fips_codes <- fips_codes[-(548:3237), ]
 fips_codes <- fips_codes[-(1:388), ]
