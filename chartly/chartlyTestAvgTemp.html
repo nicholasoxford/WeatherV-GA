@@ -18,12 +18,12 @@
     const data = await getData();
     const ctx = document.getElementById('chart').getContext('2d');
     const chart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
         labels: data.xs,
         datasets: [
             {
-            label: 'Atl Weather May',
+            label: 'Combined Land-Surface Air and Sea-Surface Water Temperature C°',
             data: data.ys,
             fill: true,
             backgroundColor: 'rgb(255, 99, 132)',
@@ -50,7 +50,7 @@
         const xs = [];
         const ys = [];
 
-        const response = await fetch('atlWeatherMay.csv');
+        const response = await fetch('ZonAnn.Ts+dSST.csv');
         const data = await response.text();
 
         const table = data.split('\n').slice(1);
@@ -59,7 +59,8 @@
             const year = columns[0];
             xs.push(year);
             const temp = columns [1];
-            ys.push(parseFloat(temp));
+            // ys.push(parseFloat(temp) + 14);
+            ys.push(temp);
             console.log(year, temp);
         });
             return {xs, ys};
