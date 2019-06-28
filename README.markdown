@@ -98,33 +98,33 @@ You will see a map of Fulton with markers where the weather stations are.
 Next, after hours of learning how much I don't know in R, I finally have code that is able to pull data, in order, and add it to a data frame. Here is the code I created.
 
 ``` 
-##Set Date for countrykey, define plus.1 as a variable and load fips_code
+// Set Date for countrykey, define plus.1 as a variable and load fips_code
 date = "2019-01-01"
 plus.1 <- 1
 data(fips_codes)
-##remove columns from fips_code that do not relate to georiga.
+// remove columns from fips_code that do not relate to georiga.
 fips_codes <- fips_codes[-(548:3237), ]
 fips_codes <- fips_codes[-(1:388), ]
 sampledf <- daily_fips(fips = 13001, date_min = date, 
                       date_max = date, var = "tmax")
-##using this to create a dataframe that I can add to later
-##Delete varibales I don't need 
+// using this to create a dataframe that I can add to later
+ // Delete varibales I don't need 
 sampledf$station_map <- NULL
 sampledf$station_metadata <- NULL
 sampledf$daily_data$tmax_reporting <- NULL
 sampledf$daily_data$fips <- 13001
 new.df <- rbind(sampledf$daily_data)
-##makenew df that I will add to later
+// makenew df that I will add to later
 gafips <- 13000
 countyfips <- 10
-##Going to have this while loop eventually run through all GA FIPS codes. 
-##I was thinking a for loop could be better
+//Going to have this while loop eventually run through all GA FIPS codes. 
+// I was thinking a for loop could be better
 while ( countyfips <= 30 ){
 fipsnum= gafips + countyfips
 countytest <- as.character(countyfips)
 countytest1 <- paste("0", countytest, sep="")
-##running an if statement to check if the fips code is one used in georiga.
-##if true it grabs the data and does the same manipulation as above
+// running an if statement to check if the fips code is one used in georiga.
+/  if true it grabs the data and does the same manipulation as above
 if(countytest1 %in% fips_codes$county_code == TRUE){
 tempdata <- daily_fips(fips = fipsnum, date_min = date, 
 date_max = date, var = "tmax")
