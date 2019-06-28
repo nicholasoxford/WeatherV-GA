@@ -108,7 +108,7 @@ fips_codes <- fips_codes[-(1:388), ]
 sampledf <- daily_fips(fips = 13001, date_min = date, 
                       date_max = date, var = "tmax")
 // using this to create a dataframe that I can add to later
- // Delete varibales I don't need 
+// Delete varibales I don't need 
 sampledf$station_map <- NULL
 sampledf$station_metadata <- NULL
 sampledf$daily_data$tmax_reporting <- NULL
@@ -124,7 +124,7 @@ fipsnum= gafips + countyfips
 countytest <- as.character(countyfips)
 countytest1 <- paste("0", countytest, sep="")
 // running an if statement to check if the fips code is one used in georiga.
-/  if true it grabs the data and does the same manipulation as above
+//  if true it grabs the data and does the same manipulation as above
 if(countytest1 %in% fips_codes$county_code == TRUE){
 tempdata <- daily_fips(fips = fipsnum, date_min = date, 
 date_max = date, var = "tmax")
@@ -134,7 +134,7 @@ tempdata$daily_data$tmax_reporting <- NULL
 tempdata$daily_data$fips <- fipsnum
 new.df <- rbind( tempdata$daily_data,new.df)
 rm(tempdata)
-##I thought removing the tempdata would solve my column id issue
+// I thought removing the tempdata would solve my column id issue
 } else { print (paste("Nothing found for", fipsnum, sep=" "))
 
 }
